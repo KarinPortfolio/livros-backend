@@ -72,7 +72,7 @@ async function deletaLivro(request, response){
 app.use(router.get('/livros', mostraLivros))
 app.use(router.post('/livros', criaLivro))
 app.use(router.patch('/livros/:id', corrigeLivro))
-app.use(router.delete('/livro/:id', deletaLivro))
+app.use(router.delete('/livros/:id', deletaLivro))
 
 //PORTA
 function mostraPorta(){
