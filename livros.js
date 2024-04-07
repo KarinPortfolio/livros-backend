@@ -22,7 +22,7 @@ async function mostraLivros(request, response){
 }
 //POST
 async function criaLivro(request, response){
-    try{
+    
 
         const novoLivro = new Livro({
             nome: request.body.nome,
@@ -30,7 +30,11 @@ async function criaLivro(request, response){
             imagem: request.body.imagem,
             resumo: request.body.resumo
         })
-    }catch(erro){
+        try{
+            const livroCriado = await novoLivro.save()
+            response.status(201).json(livroCriado)
+        }
+    catch(erro){
         console.log(erro)
     }
 }
@@ -52,6 +56,7 @@ async function corrigeLivro(request, response){
             livroEncontrado.resumo = request.body.resumo
         }
 const livroAtualizado = await livroEncontrado.save()
+response.json(livroAtualizado)
     }catch(erro){
         console.log(erro)
     }
